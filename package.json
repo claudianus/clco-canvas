@@ -1,6 +1,6 @@
 {
   "name": "clco-canvas",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "type": "module",
   "description": "A high-density TypeScript terminal UI canvas for modern CLI applications.",
   "keywords": [
