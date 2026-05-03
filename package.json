@@ -1,0 +1,91 @@
+{
+  "name": "clco-canvas",
+  "version": "0.1.0-alpha.0",
+  "type": "module",
+  "description": "A high-density TypeScript terminal UI canvas for modern CLI applications.",
+  "keywords": [
+    "tui",
+    "terminal",
+    "cli",
+    "ansi",
+    "cjk",
+    "dashboard",
+    "animation"
+  ],
+  "author": "claudianus",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claudianus/clco-canvas.git"
+  },
+  "homepage": "https://github.com/claudianus/clco-canvas",
+  "bugs": {
+    "url": "https://github.com/claudianus/clco-canvas/issues"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./buffer": {
+      "types": "./dist/buffer/cell-buffer.d.ts",
+      "import": "./dist/buffer/cell-buffer.js"
+    },
+    "./input": {
+      "types": "./dist/input/parser.d.ts",
+      "import": "./dist/input/parser.js"
+    },
+    "./layout": {
+      "types": "./dist/layout/grid.d.ts",
+      "import": "./dist/layout/grid.js"
+    },
+    "./layout/flex": {
+      "types": "./dist/layout/flex.d.ts",
+      "import": "./dist/layout/flex.js"
+    },
+    "./animation": {
+      "types": "./dist/animation/easing.d.ts",
+      "import": "./dist/animation/easing.js"
+    },
+    "./runtime/scheduler": {
+      "types": "./dist/runtime/scheduler.d.ts",
+      "import": "./dist/runtime/scheduler.js"
+    },
+    "./style": {
+      "types": "./dist/style/theme.d.ts",
+      "import": "./dist/style/theme.js"
+    },
+    "./paint": {
+      "types": "./dist/paint/primitives.d.ts",
+      "import": "./dist/paint/primitives.js"
+    },
+    "./terminal": {
+      "types": "./dist/terminal/index.d.ts",
+      "import": "./dist/terminal/index.js"
+    },
+    "./text": {
+      "types": "./dist/text/measure.d.ts",
+      "import": "./dist/text/measure.js"
+    }
+  },
+  "files": [
+    "dist/",
+    "scripts/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "test": "npm run build && node ./scripts/smoke-test.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.2",
+    "typescript": "^6.0.3"
+  }
+}
