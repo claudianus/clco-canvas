@@ -1,0 +1,38 @@
+src/plugins/manager.ts
+  s_eedc029c6c228d::t_a489a2d74f0969 1-228
+src/__tests__/plugin.test.ts
+  s_eedc029c6c228d::t_1808d100529e77 1-147
+src/widgets/renderer.ts
+  s_eedc029c6c228d::t_e0a24d05fea00e 1
+  s_eedc029c6c228d::t_23c34eeb17e95e 2-58
+package.json
+  s_eedc029c6c228d::t_673f85d094809c 3
+  s_eedc029c6c228d::t_dbfc7c27dfe698 165-176
+src/widgets/widget.ts
+  s_eedc029c6c228d::t_c43019d9047b06 1-136
+src/__tests__/widget.test.ts
+  s_eedc029c6c228d::t_01cc4cf9e54506 1-60,62-67,69-73,76-86,90-98,102-111,115-119,121-134,136-142,144,146-160,162-163,165-173,175-183,185-204,206-215,217-229,231-232,234-242,244-253
+  s_eedc029c6c228d::t_ac6ee754a943c6 99-101
+  s_eedc029c6c228d::t_bad7975f98c486 68
+  s_eedc029c6c228d::t_fde037da10d5a2 61
+  s_eedc029c6c228d::t_5c5bf7deddfff6 120,135,143,145,161,164,174,184,205,216,230,233,243
+  s_eedc029c6c228d::t_6d52cc2bd337a9 112-114
+  s_eedc029c6c228d::t_799aa49fb40d04 87-89
+  s_eedc029c6c228d::t_38f24d3e5c266a 74-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "e88f25a808ae1a33bfe801843597b6551d76daeb",
+  "prompts": {},
+  "sessions": {
+    "s_eedc029c6c228d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7988f33c-a4a1-4f1f-8a38-16dbd76379e1",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
