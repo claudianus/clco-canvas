@@ -27,7 +27,7 @@ export class CellBuffer {
 
   set(x: number, y: number, ch: string, style: Style = EMPTY_STYLE): void {
     if (x < 0 || y < 0 || x >= this.width || y >= this.height) return;
-    this.cells[y * this.width + x] = { ch, style };
+    this.cells[y * this.width + x] = { ch, style: this.mergeCellBackground(x, y, style) };
   }
 
   get(x: number, y: number): Cell {
@@ -74,7 +74,9 @@ export class CellBuffer {
     let out = "";
     for (let y = 0; y < this.height; y++) {
       if (this.rowEquals(prev, y)) continue;
-      out += cursorTo(0, y) + this.renderRow(y);
+      for (const span of this.changedSpans(prev, y)) {
+        out += cursorTo(span.start, y) + this.renderSpan(y, span.start, span.end);
+      }
     }
     return out;
   }
@@ -121,6 +123,56 @@ export class CellBuffer {
       if (a.ch !== b.ch || styleKey(a.style) !== styleKey(b.style)) return false;
     }
     return true;
+  }
+
+  private changedSpans(prev: CellBuffer, y: number): Array<{ start: number; end: number }> {
+    const spans: Array<{ start: number; end: number }> = [];
+    let x = 0;
+    while (x < this.width) {
+      while (x < this.width && this.cellEquals(prev, x, y)) x += 1;
+      if (x >= this.width) break;
+      let start = x;
+      while (start > 0 && this.get(start, y).ch === "") start -= 1;
+      while (x < this.width && !this.cellEquals(prev, x, y)) x += 1;
+      let end = x;
+      while (end < this.width && this.get(end, y).ch === "") end += 1;
+      const previous = spans.at(-1);
+      if (previous && start <= previous.end + 1) {
+        previous.end = Math.max(previous.end, end);
+      } else {
+        spans.push({ start, end });
+      }
+    }
+    return spans;
+  }
+
+  private cellEquals(prev: CellBuffer, x: number, y: number): boolean {
+    const a = this.get(x, y);
+    const b = prev.get(x, y);
+    return a.ch === b.ch && styleKey(a.style) === styleKey(b.style);
+  }
+
+  private renderSpan(y: number, start: number, end: number): string {
+    let row = "";
+    let current = "";
+    for (let x = Math.max(0, start); x < Math.min(this.width, end); x++) {
+      const cell = this.get(x, y);
+      const key = styleKey(cell.style);
+      if (key !== current) {
+        if (current) row += "\x1b[0m";
+        current = key;
+        if (key) row += styleToAnsi(cell.style);
+      }
+      if (cell.ch !== "") row += cell.ch;
+    }
+    if (current) row += "\x1b[0m";
+    return row;
+  }
+
+  private mergeCellBackground(x: number, y: number, style: Style): Style {
+    if (style.bg) return style;
+    const existingBg = this.get(x, y).style.bg;
+    return existingBg ? { ...style, bg: existingBg } : style;
   }
 }
 

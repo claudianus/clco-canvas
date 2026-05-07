@@ -4,7 +4,12 @@ export type EasingName =
   | "easeOutQuad"
   | "easeInOutQuad"
   | "easeOutCubic"
-  | "easeInOutCubic";
+  | "easeInOutCubic"
+  | "easeOutBounce"
+  | "easeOutElastic"
+  | "easeOutBack"
+  | "easeInOutExpo"
+  | "easeOutExpo";
 
 export type EasingFunction = (t: number) => number;
 
@@ -26,6 +31,37 @@ export const easings: Record<EasingName, EasingFunction> = {
   easeInOutCubic: (t) => {
     const x = clamp01(t);
     return x < 0.5 ? 4 * x * x * x : 1 - ((-2 * x + 2) ** 3) / 2;
+  },
+  easeOutBounce: (t) => {
+    const x = clamp01(t);
+    const n1 = 7.5625;
+    const d1 = 2.75;
+    if (x < 1 / d1) return n1 * x * x;
+    if (x < 2 / d1) { const x2 = x - 1.5 / d1; return n1 * x2 * x2 + 0.75; }
+    if (x < 2.5 / d1) { const x3 = x - 2.25 / d1; return n1 * x3 * x3 + 0.9375; }
+    const x4 = x - 2.625 / d1;
+    return n1 * x4 * x4 + 0.984375;
+  },
+  easeOutElastic: (t) => {
+    const x = clamp01(t);
+    if (x === 0 || x === 1) return x;
+    return 2 ** (-10 * x) * Math.sin((x * 10 - 0.75) * ((2 * Math.PI) / 3)) + 1;
+  },
+  easeOutBack: (t) => {
+    const x = clamp01(t);
+    const c1 = 1.70158;
+    const c3 = c1 + 1;
+    return 1 + c3 * (x - 1) ** 3 + c1 * (x - 1) ** 2;
+  },
+  easeInOutExpo: (t) => {
+    const x = clamp01(t);
+    return x === 0 ? 0 : x === 1 ? 1 : x < 0.5
+      ? 2 ** (20 * x - 10) / 2
+      : (2 - 2 ** (-20 * x + 10)) / 2;
+  },
+  easeOutExpo: (t) => {
+    const x = clamp01(t);
+    return x === 1 ? 1 : 1 - 2 ** (-10 * x);
   },
 };
 

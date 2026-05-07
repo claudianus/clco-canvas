@@ -46,6 +46,7 @@ export type KeyName =
   | "tab"
   | "space"
   | "paste"
+  | "mouse"
   | "char";
 
 export interface KeyEvent {
@@ -54,6 +55,7 @@ export interface KeyEvent {
   ctrl: boolean;
   meta: boolean;
   shift: boolean;
+  mouse?: MouseEvent;
 }
 
 export interface MouseEvent {

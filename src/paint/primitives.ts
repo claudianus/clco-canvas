@@ -27,23 +27,30 @@ export function drawText(buf: CellBuffer, x: number, y: number, text: string, st
   buf.write(x, y, truncateText(text, max), style, max);
 }
 
-export function drawBox(buf: CellBuffer, rect: Rect, title?: string, style: Style = { tone: "muted" }): void {
+export function drawBox(buf: CellBuffer, rect: Rect, title?: string, style: Style = { tone: "muted" }, rounded = false): void {
   if (rect.w < 2 || rect.h < 2) return;
   const x0 = rect.x;
   const y0 = rect.y;
   const x1 = rect.x + rect.w - 1;
   const y1 = rect.y + rect.h - 1;
-  buf.set(x0, y0, BOX.tl, style);
-  buf.set(x1, y0, BOX.tr, style);
-  buf.set(x0, y1, BOX.bl, style);
-  buf.set(x1, y1, BOX.br, style);
+
+  const C = rounded
+    ? { tl: "╭", tr: "╮", bl: "╰", br: "╯", h: "─", v: "│" }
+    : BOX;
+
+  if (rounded && style.bg) buf.fillRect(rect, " ", style);
+
+  buf.set(x0, y0, C.tl, style);
+  buf.set(x1, y0, C.tr, style);
+  buf.set(x0, y1, C.bl, style);
+  buf.set(x1, y1, C.br, style);
   for (let x = x0 + 1; x < x1; x++) {
-    buf.set(x, y0, BOX.h, style);
-    buf.set(x, y1, BOX.h, style);
+    buf.set(x, y0, C.h, style);
+    buf.set(x, y1, C.h, style);
   }
   for (let y = y0 + 1; y < y1; y++) {
-    buf.set(x0, y, BOX.v, style);
-    buf.set(x1, y, BOX.v, style);
+    buf.set(x0, y, C.v, style);
+    buf.set(x1, y, C.v, style);
   }
   if (title) {
     const label = ` ${truncateText(title, Math.max(0, rect.w - 4))} `;

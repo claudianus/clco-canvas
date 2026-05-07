@@ -12,6 +12,10 @@ export interface SessionRenderContext {
   now: number;
 }
 
+export interface SessionAnimationContext extends SessionRenderContext {
+  stateChangedAt: number;
+}
+
 export interface SessionOptions<T> {
   title?: string;
   alternateScreen?: boolean;
@@ -21,6 +25,7 @@ export interface SessionOptions<T> {
   escapeTimeoutMs?: number;
   render: (state: T, ctx: SessionRenderContext) => CellBuffer;
   handle: (state: T, event: KeyEvent, controls: SessionControls<T>) => void;
+  shouldAnimate?: (state: T, ctx: SessionAnimationContext) => boolean;
 }
 
 export interface SessionControls<T> {
@@ -28,6 +33,10 @@ export interface SessionControls<T> {
   resolve: (value: unknown) => void;
   reject: (err: Error) => void;
   render: () => void;
+  /** Exit alternate screen + disable raw mode without ending the session. */
+  suspend: () => void;
+  /** Re-enter alternate screen after suspend, force full render. */
+  resume: () => void;
 }
 
 export class TuiCancelled extends Error {
@@ -65,11 +74,13 @@ export function runSession<T, R>(options: SessionOptions<T>): Promise<R> {
   let state = options.initialState;
   let previous: CellBuffer | null = null;
   let settled = false;
+  let suspended = false;
   let writing = false;
   let pendingRender = false;
   let frame = 0;
   let animationTimer: ReturnType<typeof setInterval> | null = null;
   let pendingInputTimer: ReturnType<typeof setTimeout> | null = null;
+  let stateChangedAt = Date.now();
   const keyParser = new KeyParser();
   const escapeTimeoutMs = Math.max(80, options.escapeTimeoutMs ?? 150);
 
@@ -88,7 +99,7 @@ export function runSession<T, R>(options: SessionOptions<T>): Promise<R> {
     process.stdin.pause();
     if (capabilities.bracketedPaste) process.stdout.write(ANSI.bracketedPasteOff);
     if (options.mouse && capabilities.mouse) process.stdout.write(ANSI.mouseOff);
-    if (options.alternateScreen !== false && capabilities.alternateScreen) process.stdout.write(ANSI.altOff);
+    if (!suspended && options.alternateScreen !== false && capabilities.alternateScreen) process.stdout.write(ANSI.altOff);
     process.stdout.write(ANSI.showCursor + ANSI.reset);
   };
 
@@ -131,6 +142,7 @@ export function runSession<T, R>(options: SessionOptions<T>): Promise<R> {
   const controls: SessionControls<T> = {
     setState(updater) {
       state = updater(state);
+      stateChangedAt = Date.now();
       renderNow();
     },
     resolve(value) {
@@ -146,6 +158,57 @@ export function runSession<T, R>(options: SessionOptions<T>): Promise<R> {
       rejectOuter(err);
     },
     render: renderNow,
+    suspend() {
+      if (suspended || settled) return;
+      suspended = true;
+      if (animationTimer) {
+        clearInterval(animationTimer);
+        animationTimer = null;
+      }
+      process.stdin.off("data", onData);
+      process.stdout.off("resize", onResize);
+      if (process.stdin.isTTY) process.stdin.setRawMode(false);
+      process.stdin.pause();
+      if (capabilities.bracketedPaste) process.stdout.write(ANSI.bracketedPasteOff);
+      if (options.mouse && capabilities.mouse) process.stdout.write(ANSI.mouseOff);
+      if (options.alternateScreen !== false && capabilities.alternateScreen) process.stdout.write(ANSI.altOff);
+      process.stdout.write(ANSI.showCursor + ANSI.reset);
+    },
+    resume() {
+      if (!suspended || settled) return;
+      suspended = false;
+      previous = null;
+      if (process.stdin.isTTY) process.stdin.setRawMode(true);
+      process.stdin.resume();
+      process.stdin.on("data", onData);
+      process.stdout.on("resize", onResize);
+      if (options.alternateScreen !== false && capabilities.alternateScreen) process.stdout.write(ANSI.altOn);
+      if (capabilities.bracketedPaste) process.stdout.write(ANSI.bracketedPasteOn);
+      if (options.mouse && capabilities.mouse) process.stdout.write(ANSI.mouseOn);
+      process.stdout.write(ANSI.hideCursor + ANSI.clear);
+      frame = 0;
+      stateChangedAt = Date.now();
+      if (options.animationIntervalMs && options.animationIntervalMs > 0) {
+        animationTimer = setInterval(() => {
+          const width = process.stdout.columns || capabilities.columns || 80;
+          const height = process.stdout.rows || capabilities.rows || 24;
+          if (options.shouldAnimate && !options.shouldAnimate(state, {
+            width,
+            height,
+            frame,
+            now: Date.now(),
+            stateChangedAt,
+            capabilities: { ...capabilities, columns: width, rows: height },
+          })) {
+            return;
+          }
+          frame += 1;
+          renderNow();
+        }, Math.max(33, options.animationIntervalMs));
+        animationTimer.unref();
+      }
+      renderNow();
+    },
   };
 
   function dispatchEvents(events: KeyEvent[]): void {
@@ -179,6 +242,7 @@ export function runSession<T, R>(options: SessionOptions<T>): Promise<R> {
 
   function onResize(): void {
     previous = null;
+    stateChangedAt = Date.now();
     renderNow();
   }
 
@@ -200,6 +264,18 @@ export function runSession<T, R>(options: SessionOptions<T>): Promise<R> {
   renderNow();
   if (options.animationIntervalMs && options.animationIntervalMs > 0) {
     animationTimer = setInterval(() => {
+      const width = process.stdout.columns || capabilities.columns || 80;
+      const height = process.stdout.rows || capabilities.rows || 24;
+      if (options.shouldAnimate && !options.shouldAnimate(state, {
+        width,
+        height,
+        frame,
+        now: Date.now(),
+        stateChangedAt,
+        capabilities: { ...capabilities, columns: width, rows: height },
+      })) {
+        return;
+      }
       frame += 1;
       renderNow();
     }, Math.max(33, options.animationIntervalMs));

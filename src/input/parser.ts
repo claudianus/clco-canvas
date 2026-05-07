@@ -64,6 +64,12 @@ function parseInput(input: string, holdIncomplete: boolean): { events: KeyEvent[
       }
       if (holdIncomplete) return { events, pending: rest };
     }
+    const mouse = mousePrefix(rest);
+    if (mouse) {
+      events.push(mouse.event);
+      index += mouse.length;
+      continue;
+    }
     const named = namedPrefix(rest);
     if (named) {
       events.push(named.event);
@@ -81,8 +87,35 @@ function parseInput(input: string, holdIncomplete: boolean): { events: KeyEvent[
 function isIncompleteSequence(input: string): boolean {
   if (input.length === 0) return false;
   if (PASTE_START.startsWith(input) && input.length < PASTE_START.length) return true;
+  if (input.startsWith(`${ESC}[<`) && !/\x1b\[<\d+;\d+;\d+[Mm]/.test(input)) return true;
   const candidates = [`${ESC}[3~`, `${ESC}[A`, `${ESC}[B`, `${ESC}[C`, `${ESC}[D`];
   return candidates.some((candidate) => candidate.startsWith(input) && input.length < candidate.length);
+}
+
+function mousePrefix(input: string): { event: KeyEvent; length: number } | null {
+  const match = /^\x1b\[<(\d+);(\d+);(\d+)([Mm])/.exec(input);
+  if (!match) return null;
+  const code = Number(match[1]);
+  const x = Math.max(0, Number(match[2]) - 1);
+  const y = Math.max(0, Number(match[3]) - 1);
+  const suffix = match[4];
+  const type = suffix === "m" ? "up" : (code & 32) === 32 ? "move" : "down";
+  return {
+    length: match[0].length,
+    event: {
+      name: "mouse",
+      input: "",
+      ctrl: false,
+      meta: false,
+      shift: false,
+      mouse: {
+        type,
+        x,
+        y,
+        button: code & 3,
+      },
+    },
+  };
 }
 
 function namedPrefix(input: string): { event: KeyEvent; length: number } | null {
@@ -101,8 +134,6 @@ function namedKey(input: string): KeyEvent | null {
   switch (input) {
     case "\x03":
       return { ...base, name: "char", input: "c", ctrl: true };
-    case "\x0b":
-      return { ...base, name: "char", input: "k", ctrl: true };
     case "\r":
     case "\n":
       return { ...base, name: "enter" };
