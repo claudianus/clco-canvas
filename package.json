@@ -1,6 +1,6 @@
 {
   "name": "clco-canvas",
-  "version": "0.2.0-alpha.1",
+  "version": "0.3.0-alpha.0",
   "type": "module",
   "description": "A high-density TypeScript terminal UI canvas for modern CLI applications.",
   "keywords": [
@@ -43,6 +43,22 @@
       "types": "./dist/layout/flex.d.ts",
       "import": "./dist/layout/flex.js"
     },
+    "./layout/constraint": {
+      "types": "./dist/layout/constraint.d.ts",
+      "import": "./dist/layout/constraint.js"
+    },
+    "./layout/stack": {
+      "types": "./dist/layout/stack.d.ts",
+      "import": "./dist/layout/stack.js"
+    },
+    "./layout/grid-layout": {
+      "types": "./dist/layout/grid-layout.d.ts",
+      "import": "./dist/layout/grid-layout.js"
+    },
+    "./layout/viewport": {
+      "types": "./dist/layout/viewport.d.ts",
+      "import": "./dist/layout/viewport.js"
+    },
     "./animation": {
       "types": "./dist/animation/easing.d.ts",
       "import": "./dist/animation/easing.js"
@@ -66,6 +82,10 @@
     "./text": {
       "types": "./dist/text/measure.d.ts",
       "import": "./dist/text/measure.js"
+    },
+    "./text/wrap": {
+      "types": "./dist/text/wrap.d.ts",
+      "import": "./dist/text/wrap.js"
     }
   },
   "files": [
