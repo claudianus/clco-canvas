@@ -1,6 +1,6 @@
 {
   "name": "clco-canvas",
-  "version": "0.5.0-alpha.0",
+  "version": "0.6.0-alpha.0",
   "type": "module",
   "description": "A high-density TypeScript terminal UI canvas for modern CLI applications.",
   "keywords": [
@@ -162,6 +162,18 @@
     "./devtools/frame-recorder": {
       "types": "./dist/devtools/frame-recorder.d.ts",
       "import": "./dist/devtools/frame-recorder.js"
+    },
+    "./widgets/widget": {
+      "types": "./dist/widgets/widget.d.ts",
+      "import": "./dist/widgets/widget.js"
+    },
+    "./widgets/renderer": {
+      "types": "./dist/widgets/renderer.d.ts",
+      "import": "./dist/widgets/renderer.js"
+    },
+    "./plugins/manager": {
+      "types": "./dist/plugins/manager.d.ts",
+      "import": "./dist/plugins/manager.js"
     }
   },
   "files": [
