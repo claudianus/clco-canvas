@@ -1,0 +1,34 @@
+src/terminal/ansi.ts
+  s_eedc029c6c228d::t_e6ada0d2366207 34-35,37
+package.json
+  s_eedc029c6c228d::t_0732cc274f799c 3
+  s_eedc029c6c228d::t_21dc97e494ce50 78-81
+  s_eedc029c6c228d::t_fac2c5a7f1717d 85
+src/buffer/cell-buffer.ts
+  s_eedc029c6c228d::t_21f4752b045661 184
+src/input/parser.ts
+  s_eedc029c6c228d::t_92cece804a5885 230-231,235,238,241,243,245,247,249,251,253,255,257,259,261,263,265,267,269,271,273,275
+  s_eedc029c6c228d::t_315809f5e1ba28 162-164
+  s_eedc029c6c228d::t_d258552de52f2b 301
+  s_eedc029c6c228d::t_4abd8abbe2259c 284,286
+  s_eedc029c6c228d::t_cead0ebe947c5d 60,92-110,120-134,142,149,156-161,165-189,196-225,256,258,262,264,266,268,270,272,274,287-300,302-310
+src/types.ts
+  s_eedc029c6c228d::t_35209a709e4cb0 51-66,76,82,86
+  s_eedc029c6c228d::t_e78bea6f6ebaa8 25-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "9894ddeb9647c8e158ea9ef7dbd936fcf4ad161f",
+  "prompts": {},
+  "sessions": {
+    "s_eedc029c6c228d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7988f33c-a4a1-4f1f-8a38-16dbd76379e1",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
