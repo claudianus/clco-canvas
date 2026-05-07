@@ -1,0 +1,54 @@
+{
+  "name": "@clco-canvas/text",
+  "version": "0.5.0-alpha.0",
+  "type": "module",
+  "description": "CJK-first text measurement and word wrapping utilities for terminal applications",
+  "keywords": [
+    "cjk",
+    "text",
+    "word-wrap",
+    "terminal",
+    "unicode",
+    "display-width",
+    "east-asian-width"
+  ],
+  "author": "claudianus",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/claudianus/clco-canvas.git",
+    "directory": "packages/text"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./measure": {
+      "types": "./dist/measure.d.ts",
+      "import": "./dist/measure.js"
+    },
+    "./wrap": {
+      "types": "./dist/wrap.d.ts",
+      "import": "./dist/wrap.js"
+    }
+  },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "npx tsc -p tsconfig.json",
+    "typecheck": "npx tsc -p tsconfig.json --noEmit",
+    "test": "npx vitest run"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.0.0",
+    "bun": ">=1.3.13"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5"
+  }
+}

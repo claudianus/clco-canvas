@@ -1,6 +1,6 @@
 {
   "name": "clco-canvas",
-  "version": "0.4.0-alpha.0",
+  "version": "0.5.0-alpha.0",
   "type": "module",
   "description": "A high-density TypeScript terminal UI canvas for modern CLI applications.",
   "keywords": [
@@ -103,6 +103,22 @@
       "types": "./dist/components/progress-bar.d.ts",
       "import": "./dist/components/progress-bar.js"
     },
+    "./components/streaming-text": {
+      "types": "./dist/components/streaming-text.d.ts",
+      "import": "./dist/components/streaming-text.js"
+    },
+    "./components/message-bubble": {
+      "types": "./dist/components/message-bubble.d.ts",
+      "import": "./dist/components/message-bubble.js"
+    },
+    "./components/token-meter": {
+      "types": "./dist/components/token-meter.d.ts",
+      "import": "./dist/components/token-meter.js"
+    },
+    "./components/diff-view": {
+      "types": "./dist/components/diff-view.d.ts",
+      "import": "./dist/components/diff-view.js"
+    },
     "./style": {
       "types": "./dist/style/theme.d.ts",
       "import": "./dist/style/theme.js"
@@ -130,6 +146,22 @@
     "./text/wrap": {
       "types": "./dist/text/wrap.d.ts",
       "import": "./dist/text/wrap.js"
+    },
+    "./testing/snapshot": {
+      "types": "./dist/testing/buffer-snapshot.d.ts",
+      "import": "./dist/testing/buffer-snapshot.js"
+    },
+    "./testing/scenario": {
+      "types": "./dist/testing/scenario-runner.d.ts",
+      "import": "./dist/testing/scenario-runner.js"
+    },
+    "./accessibility/screen-reader": {
+      "types": "./dist/accessibility/screen-reader.d.ts",
+      "import": "./dist/accessibility/screen-reader.js"
+    },
+    "./devtools/frame-recorder": {
+      "types": "./dist/devtools/frame-recorder.d.ts",
+      "import": "./dist/devtools/frame-recorder.js"
     }
   },
   "files": [
