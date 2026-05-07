@@ -289,12 +289,13 @@ function charEvent(input: string): KeyEvent {
 function applyModifiers(event: KeyEvent, mod: number, _param: number): KeyEvent {
   // SGR modifier encoding: 1=base, 2=shift, 3=alt, 4=alt+shift,
   //   5=ctrl, 6=ctrl+shift, 7=ctrl+alt, 8=ctrl+alt+shift
+  const m = mod - 1;
   return {
     ...event,
-    shift: (mod & 1) !== 0,
-    alt: (mod & 2) !== 0,
-    ctrl: (mod & 4) !== 0,
-    meta: (mod & 8) !== 0,
+    shift: (m & 1) !== 0,
+    alt: (m & 2) !== 0,
+    ctrl: (m & 4) !== 0,
+    meta: (m & 8) !== 0,
   };
 }
 
