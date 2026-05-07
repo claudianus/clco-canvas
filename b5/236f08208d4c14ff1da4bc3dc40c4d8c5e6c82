@@ -1,0 +1,29 @@
+src/__tests__/backend-ws.test.ts
+  s_eedc029c6c228d::t_bcc2ccb37c84f0 1-245
+src/backend/websocket.ts
+  s_eedc029c6c228d::t_880f78bb40cb6f 1-238
+src/__tests__/backend-xterm.test.ts
+  s_eedc029c6c228d::t_8cdd509d644b9e 1-6,13,17-20,33,36-49,51-61,63-85,87-128
+  s_eedc029c6c228d::t_fac0ccd6ca91b7 7-12,14-16,21-32,34-35,50,62,86
+src/backend/xterm.ts
+  s_eedc029c6c228d::t_1fdffa14a4e4c3 1-216
+package.json
+  s_eedc029c6c228d::t_92963fb59155de 177-184
+  s_eedc029c6c228d::t_293f751c72b46b 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "b5236f08208d4c14ff1da4bc3dc40c4d8c5e6c82",
+  "prompts": {},
+  "sessions": {
+    "s_eedc029c6c228d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7988f33c-a4a1-4f1f-8a38-16dbd76379e1",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
