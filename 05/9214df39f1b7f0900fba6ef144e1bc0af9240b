@@ -1,0 +1,33 @@
+src/__tests__/style.test.ts
+  s_eedc029c6c228d::t_2dd85de9f87f98 1-11,13-56
+  s_eedc029c6c228d::t_bad708e016d33c 12
+vitest.config.ts
+  s_eedc029c6c228d::t_ebb925005f8b31 1-7
+src/input/parser.ts
+  s_eedc029c6c228d::t_783cfb7480a8ac 292,295-298
+src/__tests__/text.test.ts
+  s_eedc029c6c228d::t_261c16ed26cbe8 1-68,70-76,80-84,88
+  s_eedc029c6c228d::t_da0fe3c31f5639 85-87
+  s_eedc029c6c228d::t_4e371ae52537a8 77-79
+  s_eedc029c6c228d::t_d82c7f2aac06ca 69
+src/__tests__/input.test.ts
+  s_eedc029c6c228d::t_3c1919c1702c50 1-181
+src/__tests__/buffer.test.ts
+  s_eedc029c6c228d::t_e618d6ff34205b 1-117
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "059214df39f1b7f0900fba6ef144e1bc0af9240b",
+  "prompts": {},
+  "sessions": {
+    "s_eedc029c6c228d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7988f33c-a4a1-4f1f-8a38-16dbd76379e1",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
