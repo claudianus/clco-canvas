@@ -1,0 +1,63 @@
+packages/text/tsconfig.json
+  s_eedc029c6c228d::t_0bb21c39505ce2 1-16
+src/__tests__/snapshot.test.ts
+  s_eedc029c6c228d::t_61c44bfdfdb64f 1-41,43,45-103
+  s_eedc029c6c228d::t_bd2b321141de1b 42,44
+packages/text/src/measure.ts
+  s_eedc029c6c228d::t_20ccc6ff06f318 1-81
+src/testing/buffer-snapshot.ts
+  s_eedc029c6c228d::t_c7ce1a68368964 1-73
+packages/text/src/index.ts
+  s_eedc029c6c228d::t_efdfe12669792f 1-19
+packages/text/src/__tests__/text-package.test.ts
+  s_eedc029c6c228d::t_e1447095583a22 1-43,45,48-84,87-89
+  s_eedc029c6c228d::t_c8f764f126e99d 44,46-47
+  s_eedc029c6c228d::t_89496270b7d279 85-86
+src/components/diff-view.ts
+  s_eedc029c6c228d::t_116deaa554aa2c 82,88
+  s_eedc029c6c228d::t_f642231f3a604b 1-81,83-87,89-106
+src/__tests__/ai-components.test.ts
+  s_eedc029c6c228d::t_fffd39ab74801e 199
+  s_eedc029c6c228d::t_8dede3a717ab53 1-198,200-219
+src/components/streaming-text.ts
+  s_eedc029c6c228d::t_7e0cc8915ead4d 1-51
+src/components/token-meter.ts
+  s_eedc029c6c228d::t_0b939106c98b32 1-65
+src/devtools/frame-recorder.ts
+  s_eedc029c6c228d::t_0f051f8014b414 1-148
+src/testing/scenario-runner.ts
+  s_eedc029c6c228d::t_3536f2e8c85ff9 1-89
+src/components/message-bubble.ts
+  s_eedc029c6c228d::t_6028179ae80baf 1-63
+src/accessibility/screen-reader.ts
+  s_eedc029c6c228d::t_32823c8dff710a 1-86
+src/__tests__/devtools.test.ts
+  s_eedc029c6c228d::t_d84f434b77f46e 1-143
+src/__tests__/accessibility.test.ts
+  s_eedc029c6c228d::t_9cbdf175b05a6f 1-95
+package.json
+  s_eedc029c6c228d::t_445ff9dd635222 3
+  s_eedc029c6c228d::t_1fb2b7ee0e1952 106-121
+  s_eedc029c6c228d::t_e120998fa037e4 149-164
+packages/text/package.json
+  s_eedc029c6c228d::t_ae5a161420f8df 1-54
+packages/text/src/wrap.ts
+  s_eedc029c6c228d::t_8d027db5cdde60 1-13,26-179,182,184-195
+  s_eedc029c6c228d::t_03255cc7bc76f7 14-25,180-181,183
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "1fbac5fe5d12a2cb4d7b53635e8ede14792854ba",
+  "prompts": {},
+  "sessions": {
+    "s_eedc029c6c228d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7988f33c-a4a1-4f1f-8a38-16dbd76379e1",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
