@@ -22,6 +22,9 @@ export interface Style {
   bold?: boolean;
   dim?: boolean;
   inverse?: boolean;
+  italic?: boolean;
+  underline?: boolean;
+  strikethrough?: boolean;
 }
 
 export interface Span {
@@ -45,6 +48,22 @@ export type KeyName =
   | "delete"
   | "tab"
   | "space"
+  | "home"
+  | "end"
+  | "pageUp"
+  | "pageDown"
+  | "f1"
+  | "f2"
+  | "f3"
+  | "f4"
+  | "f5"
+  | "f6"
+  | "f7"
+  | "f8"
+  | "f9"
+  | "f10"
+  | "f11"
+  | "f12"
   | "paste"
   | "mouse"
   | "char";
@@ -54,15 +73,17 @@ export interface KeyEvent {
   input: string;
   ctrl: boolean;
   meta: boolean;
+  alt: boolean;
   shift: boolean;
   mouse?: MouseEvent;
 }
 
 export interface MouseEvent {
-  type: "move" | "down" | "up";
+  type: "move" | "down" | "up" | "scroll";
   x: number;
   y: number;
   button: number;
+  scrollDirection?: "up" | "down";
 }
 
 export interface CapabilityProfile {

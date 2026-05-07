@@ -1,6 +1,6 @@
 {
   "name": "clco-canvas",
-  "version": "0.1.0-alpha.6",
+  "version": "0.2.0-alpha.0",
   "type": "module",
   "description": "A high-density TypeScript terminal UI canvas for modern CLI applications.",
   "keywords": [
@@ -75,13 +75,14 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "bunx tsc -p tsconfig.json",
-    "prepack": "bun run build",
-    "test": "bun run build && bun ./scripts/smoke-test.mjs",
-    "typecheck": "bunx tsc -p tsconfig.json --noEmit"
+    "build": "npx tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "test": "npm run build && node ./scripts/smoke-test.mjs",
+    "typecheck": "npx tsc -p tsconfig.json --noEmit"
   },
   "sideEffects": false,
   "engines": {
+    "node": ">=18.0.0",
     "bun": ">=1.3.13"
   },
   "devDependencies": {

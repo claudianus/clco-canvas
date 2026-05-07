@@ -181,7 +181,7 @@ function clamp(value: number, min: number, max: number): number {
 }
 
 function styleKey(style: Style): string {
-  return `${style.tone ?? ""}:${rgbKey(style.fg)}:${rgbKey(style.bg)}:${style.bold ? "b" : ""}:${style.dim ? "d" : ""}:${style.inverse ? "i" : ""}`;
+  return `${style.tone ?? ""}:${rgbKey(style.fg)}:${rgbKey(style.bg)}:${style.bold ? "b" : ""}:${style.dim ? "d" : ""}:${style.inverse ? "i" : ""}:${style.italic ? "it" : ""}:${style.underline ? "u" : ""}:${style.strikethrough ? "s" : ""}`;
 }
 
 function styleToAnsi(style: Style): string {

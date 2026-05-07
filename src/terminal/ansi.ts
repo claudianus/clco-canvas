@@ -31,7 +31,10 @@ export function styleOpen(style: Style = {}): string {
   const codes: string[] = [];
   if (style.bold) codes.push("1");
   if (style.dim) codes.push("2");
+  if (style.italic) codes.push("3");
+  if (style.underline) codes.push("4");
   if (style.inverse) codes.push("7");
+  if (style.strikethrough) codes.push("9");
   codes.push(style.fg ? rgbCode("38", style.fg) : String(TONE_FG[style.tone ?? "normal"]));
   if (style.bg) codes.push(rgbCode("48", style.bg));
   return `\x1b[${codes.join(";")}m`;
