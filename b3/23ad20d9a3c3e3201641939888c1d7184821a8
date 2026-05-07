@@ -1,0 +1,56 @@
+package.json
+  s_eedc029c6c228d::t_dd7600972f086d 70-73
+  s_eedc029c6c228d::t_b32db4ca2e4439 3
+  s_eedc029c6c228d::t_e011477839c8c1 74-105
+  s_eedc029c6c228d::t_b0c8baa442ea91 110-113
+  s_eedc029c6c228d::t_b11161e10292b6 118-121
+src/__tests__/gradient.test.ts
+  s_eedc029c6c228d::t_72b565ced1bfe6 1-55
+src/__tests__/components.test.ts
+  s_eedc029c6c228d::t_c47206202dab93 1-138
+src/style/palette.ts
+  s_eedc029c6c228d::t_d08ccccdac83f9 1-61
+src/paint/gradient.ts
+  s_eedc029c6c228d::t_8bc631772b1e7b 1-60
+src/components/button.ts
+  s_eedc029c6c228d::t_70802f7dfb0c22 1-31
+src/__tests__/navigator.test.ts
+  s_eedc029c6c228d::t_d34da0945fe086 1-154
+src/components/text-input.ts
+  s_eedc029c6c228d::t_0826545d6d6f7a 1-60
+src/components/tabs.ts
+  s_eedc029c6c228d::t_f5931480512c77 1-49
+src/__tests__/palette.test.ts
+  s_eedc029c6c228d::t_dc41bd17e833e6 1-49
+src/components/progress-bar.ts
+  s_eedc029c6c228d::t_963600c699258e 1-31
+src/components/spinner.ts
+  s_eedc029c6c228d::t_23b84f8b8403b0 1-27
+src/runtime/navigator.ts
+  s_eedc029c6c228d::t_26021577338c41 1-2
+  s_eedc029c6c228d::t_d184b0890dc9a2 3-311
+src/components/dialog.ts
+  s_eedc029c6c228d::t_d4a9281e5aee89 1-48
+src/__tests__/focus.test.ts
+  s_eedc029c6c228d::t_e0afed5acdcb18 1-95
+src/components/list.ts
+  s_eedc029c6c228d::t_98bb5fa521a325 1-53
+src/runtime/focus.ts
+  s_eedc029c6c228d::t_b0c97f651664b9 1-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "b323ad20d9a3c3e3201641939888c1d7184821a8",
+  "prompts": {},
+  "sessions": {
+    "s_eedc029c6c228d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7988f33c-a4a1-4f1f-8a38-16dbd76379e1",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
