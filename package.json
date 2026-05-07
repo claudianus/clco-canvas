@@ -1,6 +1,6 @@
 {
   "name": "clco-canvas",
-  "version": "0.3.0-alpha.0",
+  "version": "0.4.0-alpha.0",
   "type": "module",
   "description": "A high-density TypeScript terminal UI canvas for modern CLI applications.",
   "keywords": [
@@ -67,13 +67,57 @@
       "types": "./dist/runtime/scheduler.d.ts",
       "import": "./dist/runtime/scheduler.js"
     },
+    "./runtime/navigator": {
+      "types": "./dist/runtime/navigator.d.ts",
+      "import": "./dist/runtime/navigator.js"
+    },
+    "./runtime/focus": {
+      "types": "./dist/runtime/focus.d.ts",
+      "import": "./dist/runtime/focus.js"
+    },
+    "./components/button": {
+      "types": "./dist/components/button.d.ts",
+      "import": "./dist/components/button.js"
+    },
+    "./components/text-input": {
+      "types": "./dist/components/text-input.d.ts",
+      "import": "./dist/components/text-input.js"
+    },
+    "./components/list": {
+      "types": "./dist/components/list.d.ts",
+      "import": "./dist/components/list.js"
+    },
+    "./components/tabs": {
+      "types": "./dist/components/tabs.d.ts",
+      "import": "./dist/components/tabs.js"
+    },
+    "./components/dialog": {
+      "types": "./dist/components/dialog.d.ts",
+      "import": "./dist/components/dialog.js"
+    },
+    "./components/spinner": {
+      "types": "./dist/components/spinner.d.ts",
+      "import": "./dist/components/spinner.js"
+    },
+    "./components/progress-bar": {
+      "types": "./dist/components/progress-bar.d.ts",
+      "import": "./dist/components/progress-bar.js"
+    },
     "./style": {
       "types": "./dist/style/theme.d.ts",
       "import": "./dist/style/theme.js"
     },
+    "./style/palette": {
+      "types": "./dist/style/palette.d.ts",
+      "import": "./dist/style/palette.js"
+    },
     "./paint": {
       "types": "./dist/paint/primitives.d.ts",
       "import": "./dist/paint/primitives.js"
+    },
+    "./paint/gradient": {
+      "types": "./dist/paint/gradient.d.ts",
+      "import": "./dist/paint/gradient.js"
     },
     "./terminal": {
       "types": "./dist/terminal/index.d.ts",
