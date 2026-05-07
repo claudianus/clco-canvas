@@ -1,0 +1,45 @@
+src/layout/grid-layout.ts
+  s_eedc029c6c228d::t_280697f78221d4 1-65
+src/layout/constraint.ts
+  s_eedc029c6c228d::t_88af3951977b50 1-54
+src/__tests__/layout-constraint.test.ts
+  s_eedc029c6c228d::t_c8838aa29f8c89 1-61
+src/__tests__/layout-stack.test.ts
+  s_eedc029c6c228d::t_f3127e78c3e9f4 1-47
+src/layout/stack.ts
+  s_eedc029c6c228d::t_0ba6681ecec559 1-12,22-30,40
+  s_eedc029c6c228d::t_27a281891775d8 13-21,31-39
+src/__tests__/viewport.test.ts
+  s_eedc029c6c228d::t_ee26d2599a0156 1-112
+src/text/wrap.ts
+  s_eedc029c6c228d::t_2584d466f1cb92 1-123,129,131-132,134-150,152-186
+  s_eedc029c6c228d::t_fc016ecdd89267 151
+  s_eedc029c6c228d::t_3c589ff3d44422 124-128,130,133
+package.json
+  s_eedc029c6c228d::t_0e0fe495126f1d 58-61
+  s_eedc029c6c228d::t_c03fab503bfc8d 46-57
+  s_eedc029c6c228d::t_932a65158c2f41 85-88
+  s_eedc029c6c228d::t_0e2a75b09eb563 3
+src/__tests__/layout-grid-layout.test.ts
+  s_eedc029c6c228d::t_1786de8c1ad485 1-66
+src/__tests__/wrap.test.ts
+  s_eedc029c6c228d::t_be58c081043b91 1-116
+src/layout/viewport.ts
+  s_eedc029c6c228d::t_95e431b76ac968 1-126
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "b7ffdc633da67973daeefaf5601c2b44a6236c31",
+  "prompts": {},
+  "sessions": {
+    "s_eedc029c6c228d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7988f33c-a4a1-4f1f-8a38-16dbd76379e1",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "ryan.h.park <claudianus@engineer.com>"
+    }
+  }
+}
